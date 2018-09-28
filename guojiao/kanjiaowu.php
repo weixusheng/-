@@ -1,0 +1,41 @@
+<?php
+	include("function/conn.php");
+	echo "<table width='200' border='1' cellspacing='0' cellpadding='0'>";
+	echo "<tr>";
+		echo "<td>学年学期</td>";
+		echo "<td>学号</td>";
+		echo "<td>姓名</td>";
+		echo "<td>班级</td>";
+		echo "<td>课程编号</td>";
+		echo "<td>课程名称</td>";
+		echo "<td>学时</td>";
+		echo "<td>学分</td>";
+		echo "<td>成绩</td>";
+		echo "<td>考试性质</td>";
+		echo "<td>考试状态</td>";
+	echo "</tr>";
+	$sql=mysql_query("select * from stu_info where grade='2009' and major='电气工程及其自动化'");
+	$info=mysql_fetch_array($sql);
+	do {
+		$c_no=$info['c_no'];
+		$gsql=mysql_query("select ID from tb_course_base where c_id='$c_no'");
+		$ginfo=mysql_fetch_array($gsql);
+		$cb_id=$ginfo['ID'];	
+		$asql=mysql_query("select c_week_hour from tb_course2_term where cb_id='$cb_id'");
+		$ainfo=mysql_fetch_array($asql);
+		echo "<tr>";
+		echo "<td>".$info['term']."</td>";
+		echo "<td>".$info['s_no']."</td>";
+		echo "<td>".$info['s_name']."</td>";
+		echo "<td>".$info['s_class']."</td>";
+		echo "<td>".$info['c_no']."</td>";
+		echo "<td>".$info['c_name']."</td>";
+		echo "<td>".$ainfo['c_week_hour']."</td>";
+		echo "<td>".$info['credit']."</td>";
+		echo "<td>".$info['score']."</td>";
+		echo "<td>正考</td>";
+		echo "<td>".$info['exam_type']."</td>";
+		echo "</tr>";
+	}while($info=mysql_fetch_array($sql));
+	echo "</table>";
+?>
