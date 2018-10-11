@@ -1,7 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD s_noTML 1.0 Transitional//EN" "http://www.w3.org/TR/s_notml1/DTD/s_notml1-transitional.dtd">
-<html s_namelns="http://www.w3.org/1999/s_notml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+
+    <!--origin_code-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css" />
 <link href="../../css/jscal2.css" rel="stylesheet" type="text/css" />
@@ -78,120 +90,124 @@ function xueji() {
 }
 </script>
 </head>
-
-<body class="ziye_style" onLoad="f_load()">
-<form id="form1" name="form1" method="post" action="add_stu_info_save.php" onSubmit="return xueji()">
-  <table width="685" border="0" cellspacing="0" cellpadding="0" class="trstyle">
-    <tr>
-      <td width="152" height="24" align="right">学号：</td>
-      <td colspan="2"><label for="s_no"></label>
-      <input type="text" name="s_no" id="s_no" class="formstyle" /></td>
-    </tr>
-    <tr>
-      <td align="right">姓名：</td>
-      <td colspan="2"><label for="s_name"></label>
-      <input type="text" name="s_name" id="s_name" class="formstyle"/></td>
-    </tr>
-    <tr>
-      <td align="right">性别：</td>
-      <td colspan="2" valign="middle"><label for="select"></label>
-        <select name="s_sex" id="s_sex" class="selectstyle">
-          <option selected="selected" value="">－－请选择－－</option>
-          <option value="男">－－男－－</option>
-          <option value="女">－－女－－</option>
-      </select></td>
-    </tr>
-    <tr>
-      <td align="right">出生年月日：</td>
-      <td colspan="2"><label for="s_bir"></label>
-      <input type="text" name="s_bir" id="s_bir" class="formstyle" />
-      <script type="text/javascript">//<![CDATA[
-			  var cal = Calendar.setup({
-				onSelect: function(cal) { cal.hide() }
-			  });
-			  cal.manageFields("s_bir", "s_bir", "%Y-%m-%d");
-			//]]></script>
-      </td>
-    </tr>
-    <tr>
-      <td align="right">身份证号：</td>
-      <td colspan="2"><label for="s_id"></label>
-      <input type="text" name="s_id" id="s_id" class="formstyle" /></td>
-    </tr>
-    <tr>
-      <td align="right">民族：</td>
-      <td colspan="2"><label for="nation"></label>
-      <input type="text" name="nation" id="nation" class="formstyle" /></td>
-    </tr>
-    <tr>
-      <td align="right">班级：</td>
-      
-      <td colspan="2"><label for="s_class"></label>
-        <select name="s_class" id="s_class" class="selectstyle" >
-        <option value="">－－请选择－－</option>
-        <?php
-			include("../../function/conn.php");
-			$gsql=mysql_query("select class_name from tb_class where graduate_flag='0'");
-			$ginfo=mysql_fetch_array($gsql);
-			do{
-	  	?>
-          <option value="<?php echo $ginfo["class_name"]?>">－－<?php echo $ginfo["class_name"]?>－－</option>
-		<?php
-			}while($ginfo=mysql_fetch_array($gsql));
-        ?>
-      </select></td>
-    </tr>
-    <tr>
-      <td align="right">籍贯：</td>
-      <td colspan="2"><label for="s_home"></label>
-      <input type="text" name="s_home" id="s_home" class="formstyle" /></td>
-    </tr>
-    <tr>
-      <td align="right">政治面貌：</td>
-      <td colspan="2"><label for="s_pol"></label>
-        <select name="s_pol" id="s_pol" class="selectstyle" >
-          <option value="">－－群众－－</option>
-          <option value="共青团员">－－共青团员－－</option>
-          <option value="中共预备党员">－－中共预备党员－－</option>
-          <option value="共产党员">－－共产党员－－</option>
-      </select></td>
-    </tr>
-    <tr>
-      <td align="right">入学日期：</td>
-      <td colspan="2"><label for="s_ent"></label>
-      <input type="text" name="s_ent" id="s_ent" class="formstyle" />
-       <script type="text/javascript">//<![CDATA[
-			  var cal = Calendar.setup({
-				onSelect: function(cal) { cal.hide() }
-			  });
-			  cal.manageFields("s_ent", "s_ent", "%Y-%m-%d");
-			//]]></script>
-      </td>
-    </tr>
-    <tr>
-      <td align="right"><p>银行卡号：</p></td>
-      <td colspan="2"><label for="bank_num"></label>
-      <input type="text" name="bank_num" id="bank_num" class="formstyle"></td>
-    </tr>
-    <tr>
-      <td align="right">是否龙舟队：</td>
-      <td colspan="2" valign="middle"><label for="select"></label>
-      <select name="is_dragon" id="is_dragon" class="selectstyle">
-          <option selected="selected" value="">－－请选择－－</option>
-          <option value="1">－－是－－</option>
-          <option value="0">－－否－－</option>
-      </select></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td width="132">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button" id="button" value="提交" /></td>
-      <td width="401"><input type="reset" name="button2" id="button2" value="重置" /></td>
-    </tr>
-  </table>
-</form>
+<body class="frame_body" onLoad="f_load()">
+        <form id="form1" name="form1" method="post" action="add_stu_info_save.php" onSubmit="return xueji()">
+        <div class="panel panel-default">
+                <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            添加学生学籍
+                        </h1>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>学号</label>
+                                    <input name="s_no" id="s_no" class="form-control" placeholder="学号">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>性别</label>
+                                    <select name="s_sex" id="s_sex" class="form-control">
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>身份证号</label>
+                                    <input name="s_id" id="s_id" class="form-control" placeholder="身份证号">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>班级</label>
+                                    <select name="s_class" id="s_class" class="form-control">
+                                    <?php
+                                    include("../../function/conn.php");
+                                    $gsql=mysql_query("select class_name from tb_class where graduate_flag='0'");
+                                    $ginfo=mysql_fetch_array($gsql);
+                                    do{ ?> 
+                                    <option value="<?php echo $ginfo["class_name"]?>">
+                                    －－<?php echo $ginfo["class_name"]?>－－
+                                </option>
+                                    <?php
+                                    }while($ginfo=mysql_fetch_array($gsql));
+                                    ?>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>政治面貌</label>
+                                    <select name="s_pol" id="s_pol" class="form-control">
+                                        <option>群众</option>
+                                        <option>共青团员</option>
+                                        <option>中共预备党员</option>
+                                        <option>共产党员</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>银行卡号</label>
+                                    <input name="bank_num" id="bank_num" class="form-control" placeholder="银行卡号">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>姓名</label>
+                                    <input name="s_name" id="s_name" class="form-control" placeholder="姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label>出生年月日</label>
+                                    <input name="s_bir" id="s_bir" class="form-control" placeholder="出生年月日">
+                                    <script type="text/javascript">//<![CDATA[
+                                        var cal = Calendar.setup({
+                                          onSelect: function(cal) { cal.hide() }
+                                        });
+                                        cal.manageFields("s_bir", "s_bir", "%Y-%m-%d");
+                                      //]]></script>
+                                </div>
+                                <div class="form-group">
+                                    <label>民族</label>
+                                    <input name="nation" id="nation" class="form-control" placeholder="民族">
+                                </div>
+                                <div class="form-group">
+                                    <label>籍贯</label>
+                                    <input name="s_home" id="s_home" class="form-control" placeholder="籍贯">
+                                </div>
+                                <div class="form-group">
+                                    <label>入学日期</label>
+                                    <input name="s_ent" id="s_ent" class="form-control" placeholder="入学日期">
+                                    <script type="text/javascript">//<![CDATA[
+                                        var cal = Calendar.setup({
+                                            onSelect: function(cal) { cal.hide() }
+                                            });
+                                            cal.manageFields("s_ent", "s_ent", "%Y-%m-%d");
+                                            //]]></script>
+                                </div>
+                                <div class="form-group">
+                                    <label>是否龙舟队</label>
+                                    <select name="is_dragon" id="is_dragon" class="form-control">
+                                        <option>是</option>
+                                        <option>否</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-default">提交</button>
+                                <button type="reset" class="btn btn-default">重置</button>
+                            </form>
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+       </form>
 </body>
 </html>

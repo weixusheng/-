@@ -4,20 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
 <title>无标题文档</title>
+<!-- Bootstrap Styles-->
+<link href="../assets/css/bootstrap.css" rel="stylesheet" />
+<!-- FontAwesome Styles-->
+<link href="../assets/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom Styles-->
+<link href="../assets/css/custom-styles.css" rel="stylesheet" />
 </head>
 
-<body class="ziye_style">
-<table width="99%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>
-    <iframe name="top" scrolling="no" height="50" frameborder="0" width="100%" src="class_form_1.php"></iframe>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <iframe name="window" scrolling="auto" height="0" frameborder="0" width="100%" src="blank.php"></iframe>
-    </td>
-  </tr>
-</table>
+<body class="frame_body"> 
+<!--<body class="ziye_style">-->
+<iframe name="top" scrolling="no" height="500px" frameborder="0" width="100%" src="class_form_1.php"></iframe>
+
 </body>
 </html>

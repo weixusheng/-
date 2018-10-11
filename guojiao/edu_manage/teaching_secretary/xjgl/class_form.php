@@ -11,6 +11,8 @@
 	
 <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+
+
 <script type="text/javascript">
 function f_tijiao(){
   if(form1.grade_code.value==-1){
@@ -135,12 +137,10 @@ $result = mysql_query($sql);//执行语句赋值给变量
           </div>
           <!-- /.row (nested) --> 
         </div>
-<script src="../assets/js/jquery.metisMenu.js"></script> 
-<script src="../assets/js/jquery-1.10.2.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script> 
-<!-- Metis Menu Js --> 
 
-<!-- Custom Js --> 
+<script src="../assets/js/jquery-3.3.1.min.js"></script>
+<script src="../assets/js/jquery.metisMenu.js"></script> 
+<script src="../assets/js/bootstrap.min.js"></script> 
 <script src="../assets/js/custom-scripts.js"></script>
 
 </body>

@@ -11,9 +11,8 @@
 <!-- Custom Styles-->
 <link href="../assets/css/custom-styles.css" rel="stylesheet" />
 	
-<link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-<!--Vue.js-->
-<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+<script src="../assets/js/jquery-2.0.3.min.js"></script>
+
 </head>
 <body class="frame_body"> 
 <!--<body class="ziye_style">-->

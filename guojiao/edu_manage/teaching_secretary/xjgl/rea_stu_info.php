@@ -4,19 +4,49 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
 <title>无标题文档</title>
-<!-- Bootstrap Styles-->
+
 <link href="../assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+<link href="../assets/css/font-awesome.css" rel="stylesheet" />
+
+<link href="../assets/css/custom-styles.css" rel="stylesheet" />
+
+<script src="../assets/js/jquery-3.3.1.min.js"></script>
+
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script> 
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
 </head>
 
 <body class="frame_body">
 
+<?php 
+if(isset($_POST["class_name"])||isset($_GET["class_name"])){
+	isset($_POST["class_name"])?$class_name=$_POST["class_name"]:$class_name=$_GET["class_name"];
+}
+else{
+	$class_name="经贸141";
+}
 
+include("../../function/conn.php");
+$sql=mysql_query("select * from tb_s_information where s_class='$class_name'");
+header('Content-Type:application/json');
+$rows_sum = array();
+$array=mysql_fetch_array($sql);
+header('Content-Type:application/json');
+$return_data = "";
+if($array==false){
+	$return_data = "无相应信息";
+}
+else{
+	while ($row = mysql_fetch_assoc($sql)) {
+		array_push($rows_sum,$row);
+	}
+	$return_data = json_encode(array("data" =>$rows_sum));
+}
+header("Content-Type:text/html;charset=utf-8");
+?>
 
-	
 <div class="panel panel-default">
           <div class="panel-body">
             <style>
@@ -34,51 +64,30 @@
               <thead>
                 <tr>
 				<th width="10%">学号</th>
-				<th width="10%">姓名</th>
+				<th width="8%">姓名</th>
 				<th width="7%">性别</th>
 				<th width="10%">出生年月日</th>
-				<th width="15%">身份证号</th>
-				<th width="10%">籍贯</th>
+				<th width="12%">身份证号</th>
+				<th width="18%">籍贯</th>
 				<th width="10%">政治面貌</th>
 				<th width="9%">班级</th>
 				<th width="10%">入学时间</th>
 				<th width="5%">民族</th>
-				
-				<td width="4%">&nbsp;</td>
+				<th width="4%">编辑</th>
                 </tr>
               </thead>
               
             </table>
           </div>
-		</div>
-
-<script src="../assets/js/bootstrap.min.js"></script> 
-<!-- Metis Menu Js --> 
-<script src="../assets/js/jquery.metisMenu.js"></script> 
-<!-- Custom Js --> 
-<script src="../assets/js/custom-scripts.js"></script>
-<script src="../assets/js/jquery-1.10.2.js"></script>
-      <!-- Bootstrap Js -->
-     <!-- DATA TABLE SCRIPTS -->
-<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+</div>
 
 <script>
-	
 $(document).ready(function () {
-	var sum_data = "";
+	var sum_data = <?php echo $return_data ?> ;
 	console.log("wait");
-
-
-   console.log(sum_data);
-	var table = $('#dataTables-example').DataTable({
-		ajax:{
-			 type:"post",
-			 url:"http://localhost/guojiao/edu_manage/teaching_secretary/xjgl/return_json2.php",    //请求地址
-			 //data:{class_name: "经贸122"},
-			 dataType:"json",
-				 },
-
+    console.log(sum_data);
+	var table = $('#dataTables-example').DataTable({	
+		"data": sum_data["data"],
 		"columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
 			{
 				"data": "s_no"
@@ -111,14 +120,18 @@ $(document).ready(function () {
 				"data": "nation"
 			}
 		],
-		
+		"columnDefs" : [ {
+			// 定义操作列,######以下是重点########
+			"targets" : 10,//操作按钮目标列
+			"data" : "ID",
+			"render" : function(data, type,row) {
+				var html = "<a href='change_stu_info.php?id="+ data +"'  class='up btn btn-default btn-xs'  ><i class='fa fa-times'></i> 编辑</a>"
+				return html;
+				}
+				} ],
 	});
 });
-$('#dataTables-example tbody').on('click', 'tr', function (){
-	var data = table.row(this).data();
-	alert('You clicked on ' + data[0] + '\'s row');
-	}
-);
 </script>
+
 </body>
 </html>

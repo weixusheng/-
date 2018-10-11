@@ -3,14 +3,13 @@
 /*----------------------------------------------
     COMMON  STYLES    
 ------------------------------------------------*/
-.body {
-    font-family: 'Open Sans', sans-serif;
-  background: #32C2CD url(../img/bg-img.jpg) !important;
-  
+.up_to_top{
+	z-index: 401;
 }
-
-.frame_body{
-	 font-family: 'Open Sans', sans-serif;
+body {
+    font-family: 'Open Sans', sans-serif;
+  /* background: #32C2CD url(../img/bg-img.jpg) !important; */
+  
 }
 
  #wrapper {
@@ -79,6 +78,8 @@ position: fixed;
     -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+ 
+  float:right;
 }
 .navbar-side {
   z-index: 1;
@@ -391,17 +392,17 @@ margin:0px;
 }
 .top-navbar .navbar-brand {
 color: #fff;
-width: 260px;
+width: 600px;
 text-align: left;
 height: 60px;
 font-size: 24px;
 font-weight: 700;
 text-transform: uppercase;
 line-height: 30px;
-background: #24383A;
+background: #24c2cd;
 }
 .navbar-brand b{
-color: #4BD28C;
+color: #4a94d4;
 }
 .top-navbar .nav > li {
 position: relative;
@@ -511,7 +512,7 @@ background: #096E75;
 	background: #32C2CD url(../img/bg-img.jpg) !important;
 }
 .top-navbar {
-	background: #4A4A4A;
+	background: #4a94d4;
 	border-bottom:none;
 }
 .top-navbar .nav > li > a > i {
@@ -589,8 +590,8 @@ line-height: 1.428571429;
  
  @media(min-width:768px) {
      #page-wrapper{
-        margin: 0 0 0 180px;
-        padding: 10px 20px;
+        /* margin: 0 0 0 180px; */
+        /* padding: 10px 20px; */
         /* height:100% */
         MIN-HEIGHT: 698PX;
 		
